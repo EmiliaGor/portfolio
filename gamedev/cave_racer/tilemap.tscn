@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq4kha1um7mfu"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fsp7y"]
+texture_region_size = Vector2i(64, 64)
+
+[sub_resource type="TileSet" id="TileSet_8qdcg"]
+tile_size = Vector2i(64, 64)
+sources/1 = SubResource("TileSetAtlasSource_fsp7y")
+
+[node name="tilemap" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_8qdcg")
+format = 2
