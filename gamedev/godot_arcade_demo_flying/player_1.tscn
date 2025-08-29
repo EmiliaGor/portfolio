@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdw5mbl22pdva"]
+
+[ext_resource type="Script" uid="uid://c6w22twee1582" path="res://Spaceship.gd" id="1_0t3hq"]
+[ext_resource type="Texture2D" uid="uid://452utav10y80" path="res://sprites/spaceship.png" id="2_yeiyc"]
+
+[node name="player_1" type="Node2D"]
+
+[node name="Spaceship" type="CharacterBody2D" parent="."]
+position = Vector2(380, 530)
+script = ExtResource("1_0t3hq")
+
+[node name="Spaceship_sprite" type="Sprite2D" parent="Spaceship"]
+texture = ExtResource("2_yeiyc")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spaceship"]
+polygon = PackedVector2Array(-8, 8, 0, -8, 8, 8)

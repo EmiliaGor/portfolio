@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://da0nj6n1ta7g7"]
+
+[node name="victory scene" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(17.415, 27.2066)
+text = "You win!"
