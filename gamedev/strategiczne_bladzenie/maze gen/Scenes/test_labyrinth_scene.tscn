@@ -1,0 +1,218 @@
+[gd_scene load_steps=9 format=3 uid="uid://th5im2tyeqpe"]
+
+[ext_resource type="PackedScene" uid="uid://cvo70qd07iu1" path="res://Scenes/tile_map.tscn" id="2_43mcp"]
+[ext_resource type="Texture2D" uid="uid://csepvlklhmxn8" path="res://Images/bg_640x480.png" id="2_mpk21"]
+[ext_resource type="PackedScene" uid="uid://ouxe32hrlmjm" path="res://Scenes/player.tscn" id="3_iaecr"]
+[ext_resource type="Script" path="res://Scripts/HSlider.gd" id="4_6p2bk"]
+[ext_resource type="Script" path="res://Scripts/Label.gd" id="5_btwiy"]
+[ext_resource type="Texture2D" uid="uid://c01c58vydokyh" path="res://Images/menu_button_empty.png" id="5_nvtt0"]
+[ext_resource type="Script" path="res://Scripts/solve_speed_slider.gd" id="6_1gjts"]
+[ext_resource type="Script" path="res://Scripts/solve_speed.gd" id="7_el0gf"]
+
+[node name="main" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mpk21")
+
+[node name="TileMap" parent="." instance=ExtResource("2_43mcp")]
+position = Vector2(0, 0)
+y_dim = 0
+x_dim = 0
+
+[node name="player" parent="." instance=ExtResource("3_iaecr")]
+position = Vector2(30, 30)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="grid_size_slider" type="HSlider" parent="CanvasLayer"]
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 195.0
+offset_bottom = 54.0
+min_value = 5.0
+max_value = 61.0
+step = 2.0
+value = 17.0
+script = ExtResource("4_6p2bk")
+
+[node name="Label" type="Label" parent="CanvasLayer/grid_size_slider"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -41.5
+offset_top = 28.0
+offset_right = 51.5
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "test"
+horizontal_alignment = 1
+script = ExtResource("5_btwiy")
+
+[node name="solve_speed_slider" type="HSlider" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -238.0
+offset_top = 1.0
+offset_right = -49.0
+offset_bottom = 52.0
+grow_horizontal = 0
+max_value = 1.0
+step = 0.01
+script = ExtResource("6_1gjts")
+
+[node name="Label" type="Label" parent="CanvasLayer/solve_speed_slider"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -41.5
+offset_top = 28.0
+offset_right = 51.5
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "test"
+horizontal_alignment = 1
+script = ExtResource("7_el0gf")
+
+[node name="allow_loops" type="CheckButton" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 42.0
+offset_top = 3.0
+offset_right = 86.0
+offset_bottom = 27.0
+grow_horizontal = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/allow_loops"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -101.0
+offset_top = 30.0
+offset_right = 100.0
+offset_bottom = 102.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "Allow Loops?
+"
+horizontal_alignment = 1
+
+[node name="spots_visited_column" type="Label" parent="CanvasLayer"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -304.0
+offset_bottom = 291.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+
+[node name="show_labels" type="CheckButton" parent="CanvasLayer"]
+offset_left = 262.0
+offset_right = 306.0
+offset_bottom = 24.0
+button_pressed = true
+action_mode = 0
+keep_pressed_outside = true
+
+[node name="showing_labels" type="Label" parent="CanvasLayer/show_labels"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -92.0
+offset_top = 33.0
+offset_right = 109.0
+offset_bottom = 105.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "Show Labels?"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 552.0
+offset_top = 476.0
+offset_right = 729.0
+offset_bottom = 525.0
+text = "< miejsce na labirynt >"
+fit_content = true
+
+[node name="MoveUpButton" type="Button" parent="."]
+offset_top = -305.0
+offset_right = 245.0
+offset_bottom = -210.0
+text = "MOVE
+UP"
+icon = ExtResource("5_nvtt0")
+flat = true
+icon_alignment = 1
+
+[node name="TurnLeftButton" type="Button" parent="."]
+offset_left = -490.0
+offset_top = 131.0
+offset_right = -245.0
+offset_bottom = 226.0
+text = "TURN
+LEFT"
+icon = ExtResource("5_nvtt0")
+flat = true
+icon_alignment = 1
+
+[node name="TurnRightButton" type="Button" parent="."]
+offset_left = 531.0
+offset_top = 131.0
+offset_right = 776.0
+offset_bottom = 226.0
+text = "TURN
+RIGHT"
+icon = ExtResource("5_nvtt0")
+flat = true
+icon_alignment = 1
+
+[node name="PrevPlayerButton" type="Button" parent="."]
+offset_left = 296.0
+offset_top = 547.0
+offset_right = 541.0
+offset_bottom = 642.0
+text = "PREVIOUS
+PLAYER"
+icon = ExtResource("5_nvtt0")
+flat = true
+icon_alignment = 1
+
+[node name="NextPlayerButton" type="Button" parent="."]
+offset_left = 536.0
+offset_top = 547.0
+offset_right = 781.0
+offset_bottom = 642.0
+text = "NEXT PLAYER"
+icon = ExtResource("5_nvtt0")
+flat = true
+icon_alignment = 1
+
+[connection signal="value_changed" from="CanvasLayer/grid_size_slider" to="." method="_on_grid_size_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/grid_size_slider" to="CanvasLayer/grid_size_slider/Label" method="_on_grid_size_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/solve_speed_slider" to="." method="_on_solve_speed_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/solve_speed_slider" to="CanvasLayer/solve_speed_slider/Label" method="_on_solve_speed_slider_value_changed"]
+[connection signal="toggled" from="CanvasLayer/allow_loops" to="." method="_on_allow_loops_toggled"]
+[connection signal="toggled" from="CanvasLayer/show_labels" to="." method="_on_show_labels_toggled"]

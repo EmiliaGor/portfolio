@@ -1,0 +1,212 @@
+[gd_scene load_steps=10 format=3 uid="uid://th5im2tyeqpe"]
+
+[ext_resource type="Script" uid="uid://bttqbomvwduq" path="res://Scripts/main.gd" id="1_68u47"]
+[ext_resource type="PackedScene" uid="uid://cvo70qd07iu1" path="res://Scenes/tile_map.tscn" id="2_54x7c"]
+[ext_resource type="PackedScene" uid="uid://ouxe32hrlmjm" path="res://Scenes/player.tscn" id="3_ibhae"]
+[ext_resource type="PackedScene" uid="uid://bq2glwsrtfgbh" path="res://Scenes/maze_exit.tscn" id="4_ce384"]
+[ext_resource type="Script" uid="uid://bpd7o26q7tbmi" path="res://Scripts/HSlider.gd" id="4_ris05"]
+[ext_resource type="Script" uid="uid://crbo24tk6sqgy" path="res://Scripts/Label.gd" id="5_yo20d"]
+[ext_resource type="Script" uid="uid://ctsegih6rh5ks" path="res://Scripts/solve_speed_slider.gd" id="6_va3lp"]
+[ext_resource type="Script" uid="uid://b1ew14cg12dbe" path="res://Scripts/solve_speed.gd" id="7_4m6y7"]
+[ext_resource type="Texture2D" uid="uid://c01c58vydokyh" path="res://Images/menu_button_empty.png" id="8_hshiw"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_68u47")
+
+[node name="TileMap" parent="." instance=ExtResource("2_54x7c")]
+position = Vector2(0, 0)
+scale = Vector2(0.6, 0.6)
+y_dim = 0
+x_dim = 0
+
+[node name="player" parent="." instance=ExtResource("3_ibhae")]
+position = Vector2(30, 30)
+
+[node name="maze_exit" parent="." instance=ExtResource("4_ce384")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="grid_size_slider" type="HSlider" parent="CanvasLayer"]
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 195.0
+offset_bottom = 54.0
+min_value = 5.0
+max_value = 61.0
+step = 2.0
+value = 17.0
+script = ExtResource("4_ris05")
+
+[node name="Label" type="Label" parent="CanvasLayer/grid_size_slider"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -41.5
+offset_top = 28.0
+offset_right = 51.5
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "test"
+horizontal_alignment = 1
+script = ExtResource("5_yo20d")
+
+[node name="solve_speed_slider" type="HSlider" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -238.0
+offset_top = 1.0
+offset_right = -49.0
+offset_bottom = 52.0
+grow_horizontal = 0
+max_value = 1.0
+step = 0.01
+script = ExtResource("6_va3lp")
+
+[node name="Label" type="Label" parent="CanvasLayer/solve_speed_slider"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -41.5
+offset_top = 28.0
+offset_right = 51.5
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "test"
+horizontal_alignment = 1
+script = ExtResource("7_4m6y7")
+
+[node name="allow_loops" type="CheckButton" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 42.0
+offset_top = 3.0
+offset_right = 86.0
+offset_bottom = 27.0
+grow_horizontal = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/allow_loops"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -101.0
+offset_top = 30.0
+offset_right = 100.0
+offset_bottom = 102.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "Allow Loops?
+"
+horizontal_alignment = 1
+
+[node name="spots_visited_column" type="Label" parent="CanvasLayer"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -304.0
+offset_bottom = 291.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+
+[node name="show_labels" type="CheckButton" parent="CanvasLayer"]
+offset_left = 262.0
+offset_right = 306.0
+offset_bottom = 24.0
+
+[node name="showing_labels" type="Label" parent="CanvasLayer/show_labels"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -92.0
+offset_top = 33.0
+offset_right = 109.0
+offset_bottom = 105.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "Show Labels?"
+horizontal_alignment = 1
+
+[node name="MoveUpButton" type="Button" parent="."]
+offset_left = 125.0
+offset_top = -127.0
+offset_right = 370.0
+offset_bottom = -32.0
+scale = Vector2(0.7, 0.7)
+text = "MOVE
+UP"
+icon = ExtResource("8_hshiw")
+flat = true
+icon_alignment = 1
+
+[node name="TurnLeftButton" type="Button" parent="."]
+offset_left = -67.0
+offset_top = -127.0
+offset_right = 178.0
+offset_bottom = -32.0
+scale = Vector2(0.7, 0.7)
+text = "TURN
+LEFT"
+icon = ExtResource("8_hshiw")
+flat = true
+icon_alignment = 1
+
+[node name="TurnRightButton" type="Button" parent="."]
+offset_left = 315.0
+offset_top = -127.0
+offset_right = 560.0
+offset_bottom = -32.0
+scale = Vector2(0.7, 0.7)
+text = "TURN
+RIGHT"
+icon = ExtResource("8_hshiw")
+flat = true
+icon_alignment = 1
+
+[node name="PrevPlayerButton" type="Button" parent="."]
+offset_left = 463.0
+offset_top = 459.0
+offset_right = 708.0
+offset_bottom = 554.0
+scale = Vector2(0.7, 0.7)
+text = "PREVIOUS
+PLAYER"
+icon = ExtResource("8_hshiw")
+flat = true
+icon_alignment = 1
+
+[node name="NextPlayerButton" type="Button" parent="."]
+offset_left = 463.0
+offset_top = 393.0
+offset_right = 708.0
+offset_bottom = 488.0
+scale = Vector2(0.7, 0.7)
+text = "NEXT PLAYER"
+icon = ExtResource("8_hshiw")
+flat = true
+icon_alignment = 1
+
+[connection signal="value_changed" from="CanvasLayer/grid_size_slider" to="." method="_on_grid_size_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/grid_size_slider" to="CanvasLayer/grid_size_slider/Label" method="_on_grid_size_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/solve_speed_slider" to="." method="_on_solve_speed_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/solve_speed_slider" to="CanvasLayer/solve_speed_slider/Label" method="_on_solve_speed_slider_value_changed"]
+[connection signal="toggled" from="CanvasLayer/allow_loops" to="." method="_on_allow_loops_toggled"]
+[connection signal="toggled" from="CanvasLayer/show_labels" to="." method="_on_show_labels_toggled"]
+[connection signal="pressed" from="MoveUpButton" to="." method="_on_move_up_button_pressed"]
+[connection signal="pressed" from="TurnLeftButton" to="." method="_on_turn_left_button_pressed"]
+[connection signal="pressed" from="TurnRightButton" to="." method="_on_turn_right_button_pressed"]
+[connection signal="pressed" from="PrevPlayerButton" to="." method="_on_prev_player_button_pressed"]
+[connection signal="pressed" from="NextPlayerButton" to="." method="_on_next_player_button_pressed"]
