@@ -3,6 +3,7 @@
 - Demo of a game demonstrating my ability to implement pathfinding using A* alogrithm. Demo was a group poject, my resonsiblities focused on pathfinding and implementation of A* algorithm. [demo_ai_pathfinding](gamedev/demo_ai_pathfinding)
 - Demo of an arcade like game meant to be a race between two players piloting ships. Writen in Godot [godot_arcade_demo_flying](gamedev/godot_arcade_demo_flying) <br />
 - Program generating a maze and populates it with movable pices and some special tiles. Originally meant to be used to play a card game. Group poroject, my responsibilities focused on generating the maze and spawning special tiles. Wrtien in Godot [maze_gen](https://github.com/EmiliaGor/portfolio/tree/main/gamedev/maze%20gen) <br />
+- Demo walk sim in unity using free assets. Included a short event that can be triggered. [unity_walk_sim](https://drive.google.com/file/d/1HcJwIuSkLkfVanZDwf3hBGPt_sm8HmTP/view?usp=drive_link)<br />
 
 ## 3D modeling and animation:<br />
 - Simple 3d model of a plush toy.<br />
