@@ -5,6 +5,9 @@
 - Program generating a maze and populates it with movable pices and some special tiles. Originally meant to be used to play a card game. Group poroject, my responsibilities focused on generating the maze and spawning special tiles. Wrtien in Godot [maze_gen](https://github.com/EmiliaGor/portfolio/tree/main/gamedev/maze%20gen) <br />
 - Demo walk sim in unity using free assets. Included a short event that can be triggered. [unity_walk_sim](https://drive.google.com/file/d/1HcJwIuSkLkfVanZDwf3hBGPt_sm8HmTP/view?usp=drive_link)<br />
 
+## coding <br />
+- Python program implementing a graph and using Prim's algorythm to generate a maze and then display it using utf characters. [python_maze](coding/python_maze_project.py)
+
 ## 3D modeling and animation:<br />
 - Simple 3d model of a plush toy. [plush](3Dmodeling/plush_model.blend) <br />
 - Simple 3d model of a door. [door](3Dmodeling/door_model) <br />
