@@ -1,0 +1,49 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+using System.Collections;
+public class controls : MonoBehaviour
+{
+    InputAction moveAction;
+    float speed;
+    float maxSpeed = 0.05F;
+    float acceleration;
+    float angSpeed;
+    float maxAngSpeed = 50F;
+    float angAcceleration;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        angAcceleration = 3F;
+        acceleration = 0.0005F;
+        moveAction = InputSystem.actions.FindAction("Move");
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        Vector2 moveValue = moveAction.ReadValue<Vector2>();
+        // Debug.Log(moveValue );
+        //https://docs.unity3d.com/6000.2/Documentation/ScriptReference/Transform-position.html
+        if (moveValue.y > 0 && speed < maxSpeed)
+        {
+            speed += acceleration;
+        }
+        else if (moveValue.y < 0 && speed > -maxSpeed)
+        {
+            speed -= acceleration;
+        }
+        transform.position += speed* transform.up* Time.deltaTime*100;
+        Debug.Log(transform.forward);
+        if (moveValue.x < 0 && angSpeed < maxAngSpeed)
+        {
+            angSpeed += angAcceleration;
+        } else if (moveValue.x > 0 && angSpeed > -maxAngSpeed)
+        {
+            angSpeed -= angAcceleration;
+        }
+        transform.Rotate(new Vector3(0, 0, angSpeed)* Time.deltaTime, Space.World);
+        // Debug.Log(speed);
+        // Debug.Log(angSpeed);
+        
+        
+    }
+}
